@@ -54,3 +54,10 @@
     - It can also call the next `middleware` that is in the stack.
 
 - Main use case of `Middleware` is : `Authentication`.
+
+
+- CORS - Cross Origin Resource Sharing
+    - It is the way in which our `frontend` talks to the `backend`. But, generally, the cross origin requests are blocked to prevent malicious scripts reading sensitive data secretly from another site.
+
+    - So, `cors` acts as a middleware that allows the sites to send request is validated by the main site.
+    Example: Suppose a website A `facebook.com` sends a fetch request to website B `apis.facebook.com`, then after validation, website B gives website A the access to the data of website B. Whereas, if website C `google.com` tries to fetch the data from website B, it gets rejected.
