@@ -5,7 +5,13 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+// This is using CORS middleware
+// app.use(cors());
+
+// Also, we can do this without cross origin
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + "/public/index.html");
+})
 
 app.post('/sum', (req, res) => {
     const a = parseInt(req.body.a);
