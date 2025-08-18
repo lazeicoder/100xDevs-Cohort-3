@@ -1,6 +1,9 @@
 const express = require('express');
 
+// Create an instance of express
 const app = express();
+
+// Middleware that helps to parse JSON data
 app.use(express.json());
 
 const users = [];
@@ -29,8 +32,8 @@ app.post('/signup', (req, res) => {
         });
     } else {
         users.push({
-            username,
-            password
+            username: username,
+            password: password
         });
 
         res.status(200).send({
@@ -69,7 +72,7 @@ app.delete('/logout', (req, res) => {
     let user = users.find(user => user.username === username && user.password === password);
 
     if (user && user.token) {
-        delete user.token;
+        user.token = "";
         console.log(user);
 
         res.status(200).send({
@@ -84,7 +87,8 @@ app.delete('/logout', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.status(200).json(users);
-})
+});
+
 
 app.listen(3000, () => {
     console.log(`Server is live on Port 3000`);
