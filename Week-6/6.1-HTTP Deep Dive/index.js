@@ -89,6 +89,22 @@ app.get('/admin', (req, res) => {
     res.status(200).json(users);
 });
 
+app.get('/me', (req, res) => {
+    const token = req.headers.token;
+    const user = users.find(user => user.token === token);
+    
+    if(user) {
+        res.status(200).send({
+            msg: "User found",
+            username: user.username
+        });
+    } else {
+        res.status(401).send({
+            msg: "Unauthorized"
+        });
+    }
+});
+
 
 app.listen(3000, () => {
     console.log(`Server is live on Port 3000`);
