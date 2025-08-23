@@ -73,8 +73,13 @@ app.get('/me', (req, res) => {
 
     if (userData) {
         res.send({
-            msg: "Already Logged In"
+            msg: "Already Logged In",
+            userInfo: {
+                username: userData.username,
+                email: userData.email 
+            }
         });
+
     } else {
         res.send({
             msg: "No data found!"
